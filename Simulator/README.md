@@ -17,6 +17,8 @@ Self-contained drop-in. Paste the whole file into a chat (no git required).
 
 Persistence: Character Pack (CARD + MEMORY) via Drive/local/paste — see the runtime file.
 
+**Image layer:** Visual rendering via `Images/CharacterRenderingEngine.md` is **off by default** (`visual.mode: off`) for zero turn latency in RP. Force a frame anytime with `/render`, or toggle auto motion rendering with `/visual off|fast|prompts|live`.
+
 ## When to use what
 
 | Goal | Use |

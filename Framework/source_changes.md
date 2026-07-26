@@ -1,6 +1,26 @@
 # Source Changes — Psyche Framework
 *Changes made from original source material during this chat*
 
+## 2026-07-24 — Instruction-to-Constraint Optimization Pass — **applied** (agent)
+
+- **Problem:** Imperative and procedural instructions ("Do X", "Try to ensure Y", "Make sure to check Z") are less deterministic and consume higher token overhead than explicit constraints.
+- **Framework/Main.md:** Refactored engine invariants, drafting workflow constraints, embodiment baseline rules, syntactical speech engine, epistemic memory, skill lookup, transformation engine, and turn execution into structured constraint blocks and decision tables using explicit `MUST`, `NEVER`, `SCOPE`, `PRECEDENCE`, and `INVARIANT` declarations.
+- **Framework/Rules_Index.md:** Converted procedural cleanup, behavior, formatting, and dialogue lists into declarative constraint tables and invariant blocks.
+- **Simulator/CharacterRuntime.md** + **Simulator/Private/CharacterRuntime.md:** Refactored Somatic Engine rules, Epistemic/Skill lookup, and Adult safety gates into explicit constraint tables with quantitative bounds (`MAX 1 tell per beat`) and strict safety invariants (`ALL GATES MUST PASS`).
+
+## 2026-07-24 — Image prompt latency optimization & decoupling — **applied** (agent)
+
+- **Problem:** Auto-generating full image prompts and stills on every turn loop beat added significant latency/overhead to RP interactions in CharacterRuntime.
+- **Simulator/CharacterRuntime.md** + **Simulator/Private/CharacterRuntime.md:** Set `visual.mode: off` by default for zero RP turn latency. Added `/visual fast` mode (lightweight 1-line prompt tag stored in MEMORY without writing files or calling tools). Turn-loop step 13 skips visual pass entirely when `visual.mode == off` (0ms overhead). Manual frame generation remains available anytime via `/render`. Prompt files (`.prompt.md`) generated during live rendering or `/render` are automatically deleted/removed after still creation to avoid taking up disk space.
+- **Images/CharacterRenderingEngine.md:** Decoupled auto-visual pass from mandatory turn execution; updated `In-turn companion` rules for `off` default, `fast` mode, and automatic post-render prompt cleanup.
+- **Simulator/README.md:** Documented default `off` mode and `/visual off|fast|prompts|live` slash commands.
+
+## 2026-07-24 — Image layer: auto-render on scene motion — **applied** (agent)
+
+- **Problem:** CharacterRenderingEngine listed auto-triggers, but TURN LOOP never ran a visual pass; frames only appeared on manual `/render`. Scene movement did not produce output.
+- **Simulator/CharacterRuntime.md** + **Simulator/Private/CharacterRuntime.md:** MEMORY.visual block; `/visual live|prompts|on|off`; rewrite VISUAL RENDERING PIPELINE as mandatory motion-driven layer; turn-loop step 13 = visual pass (fingerprint → prompt → live image_gen/image_edit continuity chain).
+- **Images/CharacterRenderingEngine.md:** scene-motion triggers, live gen protocol (base then delta edits), in-turn agent integration required on every motion beat.
+
 ## 2026-07-17 — Rename Sexuality → Erotica module — **applied** (agent)
 
 - **Rename:** `Framework/Mechanics/sexuality.md` → `Framework/Mechanics/erotica.md`

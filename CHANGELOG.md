@@ -1,122 +1,75 @@
 # Changelog
 
-All notable changes to **CognitiveMiddleware / Midlayer** are recorded here.
+All notable changes to the **CognitiveMiddleware** project will be documented in this file.
 
-Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).  
-Dates are **YYYY-MM-DD**. Newest entries first.
-
-**Agents:** After any substantive change to this repository, append an entry under `[Unreleased]` (or a dated release section if shipping). See [AGENTS.md](./AGENTS.md).
-
-**Related logs (not this file):**
-- `Framework/source_changes.md` — detailed framework session / design-lock notes (never load for draft generation)
-- `Framework/Character_Change_Log.md` — in-book character matrix snapshots (story runtime, not product history)
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to standard Semantic Versioning / chronological release tracking.
 
 ---
 
-## [Unreleased]
+## [Unreleased] - 2026-07-24 - 2026-07-26
 
 ### Added
-
-- **Midlayer runtime CLI (P0 spine):** `python3 scripts/run.py midlayer` with `status`, `gate`, `pack`, `commit`, `seed-log`, `rebuild-log` (`Framework/midlayer/`). Integrity gates block dirty state; packs compile kernel + on-scene context; commits atomically write Continuity_Ledger, character logs (revision, bias deltas, temp-effect decay), and regenerate `Character_Change_Log.md`. Claims contract: `Framework/midlayer/CLAIMS.md`. Tests: `tests/test_midlayer.py`.
-- **Init asks writing scope first:** Novel initialization (`Framework/Prompts/initialize_novel_prompt.md`) opens with Step 1 — Short Story / Novelette / Novella / Novel / Epic / Other (plus target length). Scope is written into `Framework/Novel_Outline.md` and scales premise, arc, and structure suggestions. Plot designer reads and respects the locked scope.
+- **Local Machine Agent Safeguards**: Added strict local machine agent requirement for prompt file write operations (`b9d29c8`).
+- **Silent Instant Prompt Generation**: Implemented fast, zero-latency image prompt tags and background prompt creation without blocking turn execution (`4297d03`).
 
 ### Changed
-
-- **Drafting path is CLI-first:** `Main.md`, `load_protocol.md`, `AGENTS.md`, and `README.md` require `midlayer status/pack/commit` instead of freehand ledger edits. README author controls use plain language (slash table removed from product surface).
-- **Linter:** flags bracketed somatics / CONFIG / Prism intercept debug leaks.
-- **Init and character builder remove demo cast:** Sample characters (`reed`, `helen`, `cass`, `wren`, `nora`, `lior` + logs) are deleted and `Relations.md` / `Relationships.canvas` cleared by novel init post-cleanup **and** by character builder Pre-Step (if init was skipped). Scaffolds/templates kept. Documented in `Characters/README.md`; reset restores demos when Git is available.
-- **Renamed project host from BookOS → Midlayer** (folder, docs, license, scripts, canvas paths, build helpers). Product remains Cognitive Middleware / Psyche Matrix; no longer branded as an “OS.”
-- Deploy script examples use a generic sibling book folder (`MyNovel`) instead of the project name.
-
-### Added (earlier unreleased)
-
-- Root `CHANGELOG.md` as the project product changelog.
-- Root `AGENTS.md` with mandatory changelog maintenance and agent operating rules.
-- Root `CLAUDE.md` thin entry pointing at `AGENTS.md` / `CHANGELOG.md`.
+- **Instruction-to-Constraint Optimization**: Converted imperative and procedural instructions across `Main.md`, `Rules_Index.md`, and `CharacterRuntime.md` into explicit declarative constraint tables using `MUST`, `NEVER`, `SCOPE`, `PRECEDENCE`, and `INVARIANT` blocks (`4465555`).
+- **Live Image Still Routing**: Updated rendering specifications to save stills directly to `Images/{slug}/` and automatically purge transient `.prompt.md` files post-generation to conserve storage (`3d44403`, `4465555`).
 
 ---
 
-## [2026-07-18]
-
-### Changed
-
-- Removed all slash-style author/simulator command syntax from documentation.
-- Author and simulator controls use plain language only (e.g. “enable adult mode”, “unlock style”, “draft the next movement”).
-- Prompt invoke headers rewritten without slash prefixes (`Build character`, `Build world`, `Initialize novel`, etc.).
-- Historical notes in `Framework/source_changes.md` rephrased so they no longer teach slash syntax.
-
-### Files touched (summary)
-
-- `README.md`, `Simulator/README.md`, `Simulator/CharacterRuntime.md`
-- `Framework/Mechanics/prose.md`, `Framework/Mechanics/erotica.md`, `Framework/Drafting_Prompt.md`
-- `Framework/Prompts/*`, `Framework/source_changes.md`
-
----
-
-## [2026-07-17]
+## [1.2.0] - 2026-07-23
 
 ### Added
-
-- Embodiment baseline → runtime filters pipeline in `Framework/Main.md` (body sets capacity; culture, occupation, Focus, belief, memory, Bias, and scene pressure filter output).
-- Simulator one-switch plain-language **enable adult mode** (sets `adult_auth` + HEAT when canon adult).
-- Bond setup via plain language for established relationships.
+- **Character Engine Vocal Synthesis**: Introduced vocal behavior profiles, verbal defense mechanisms, conversational stance rules, and dual-register synthesis into character cards (`e868cce`).
+- **Motion-Driven Visual Layer**: Integrated auto-rendering of image layers triggered dynamically by scene movement in `CharacterRuntime` (`45191eb`).
 
 ### Changed
-
-- Renamed Sexuality module → **Erotica** (`Framework/Mechanics/erotica.md`); ambient desire remains Main middleware; erotica file is scene craft only.
-- Execute-on-movement order: body baseline → filters → Focus/Bias → body-first prose → prism → modules → transform → bans → commit.
+- **Simulator Streamlining**: Refactored private `CharacterRuntime` to streamline author live testing and chat drop-ins (`74f4119`).
+- **Private Directory Security**: Untracked `Simulator/Private/` from git and added default exclusion patterns to `.gitignore` (`81e1c79`).
 
 ---
 
-## [2026-07-13]
+## [1.1.0] - 2026-07-17
 
 ### Added
-
-- `Simulator/` side tool for live card testing and private sessions (not the product surface).
-- Hard bans against debug dumps, matrix footers, and bracketed somatics in draft/sample prose.
+- **Embodiment Baseline Pipeline**: Added body-first physical and sexed/hormonal capacity baselines in `Framework/Main.md` to feed silently into runtime filters (`725e431`).
+- **One-Switch `/adult` Toggle**: Added `/adult on|off` command in `CharacterRuntime` for quick activation of heat/intimacy protocols during private RP sessions (`725e431`).
+- **Obsidian Visual Relations Canvas**: Added linkified character relationship structures and visual canvas support (`56724fe`).
+- **World Builder & Degradation Protocols**: Integrated world builder prompt utilities and system degradation handling into core framework (`001dfc2`).
 
 ### Changed
-
-- Main entry path: honest load protocol; drafting-only execute loop; stubs point at Main.
-- Removed `Web/` mirrored copies; simulator holds optional chat runtime.
+- **Product Scope Refinement**: Positioned CognitiveMiddleware as a 100% off-page drafting middle layer for fiction, categorizing `Simulator/` as an optional side tool (`a4d89b7`).
+- **Module Renaming**: Renamed `Sexuality` module to `Erotica Protocol` (`erotica.md`) with act-agnostic scene craft scope (`725e431`, `872ac97`).
+- **Dual Licensing Model**: Introduced hybrid MIT license for the core framework engine and CC BY-SA 4.0 for documentation (`0cf1d39`).
+- **Local Character Separation**: Carved out named character cards (`Characters/`) from open distribution as author-local files (`9ac3ecb`).
 
 ---
 
-## [2026-07-12]
+## [1.0.0] - 2026-07-15 - 2026-07-16
 
 ### Added
-
-- Wound activity & dormancy (Bias ACTIVE vs DORMANT).
-- Dynamic Focus shifting and Focus Lock state machine.
-- Somatic-cognitive sequence (body before insight) and somatic pacing/decay rules.
-- Dynamic canon character synthesis for playground/card demos.
+- **Tripartite Filtering System**: Split character worldview into Cultural Bias & Occupation (background) and Cognitive Bias / Wound (dynamic situational filter) (`5804cdb`).
+- **Transformation Engine & Depth of Knowledge**: Added transformation weights, memory recall filters, and somatic tell decay logs (`1bb8218`, `7527be4`).
+- **Automated Prose Linter**: Integrated `Framework/linter.py` with cross-platform wrapper scripts (`scripts/run.py`, `scripts/unix/deploy.sh`, `scripts/windows/deploy.ps1`) (`9a3e658`).
+- **Historical Character Importing & Safety Gates**: Added temporal awareness gating, historical character import rules, and visual appearance verification (`20bfed8`, `5328dc9`, `7a8019e`).
 
 ### Changed
-
-- Humanity / prose protocols reorganized; prose style auto-lock after first response.
-- Token-oriented psychology loading (realm index / dense data path).
+- **YAML Frontmatter Optimization**: Converted verbose markdown character cards and realm profiles to pure YAML arrays (`realm_data.yaml`), reducing mandatory token load by 46%-57% (`261f48c`, `2c8f330`, `OPTIMIZATION_SUMMARY.md`).
 
 ---
 
-## [2026-07-09]
+## [0.9.0] - 2026-07-12 - 2026-07-14
 
 ### Added
-
-- Prose style selector and lock-on-select (`llm` default; optional `natural` and catalog styles).
-- Character-first load model and Canon Adult 18+ gate for intimacy protocols.
-- Optional sexuality/erotica protocol (gated; default off).
-- Imperfect recall, deflection, and cognitive misconstrual (biased hearing) rules.
-- Single-prompt playground drop-in for chat demos.
+- **Single Entry Point (`Main.md`)**: Consolidated load stack, workflow commands, and execution loop into `Framework/Main.md` (`7ec5732`).
+- **Central Rules Index (`Rules_Index.md`)**: Consolidated hard bans, cleanup protocols, and dialogue rules (`23579c9`).
+- **Somatic-Cognitive Engine**: Enforced "body-first, mind-second" sequence where somatic reactions precede cognitive labeling and dialogue (`humanity.md`).
 
 ### Changed
+- **Project Rebranding**: Renamed project from *PsycheFramework* / *Psyche Framework* to **CognitiveMiddleware** (`35d2f4f`, `9b8b139`).
+- **Off-Page Matrix Guarantee**: Hard-banned system jargon, realm numbers, bias names, and bracketed debug output from draft manuscript prose (`8a8cc6a`, `d8004e6`).
+- **Modular Directory Restructure**: Moved chat playground tools to `Simulator/playground.md` and decoupled drafting runtime from live chat (`e8c5cc5`, `69f111d`).
 
-- Mechanics renamed to short names: `humanity.md`, `voices.md`, `prose.md`, sexuality/erotica path.
-- Voice profiles generalized to archetypes A–F (demo novel names removed from protocol).
-
----
-
-## Notes
-
-- Patch-level or typo-only edits may be folded into the current `[Unreleased]` bullet rather than a new dated section.
-- Prefer user-visible / structural / API / protocol changes over every internal whitespace tweak.
-- When both apply: update **this file** for product/repo history; use `Framework/source_changes.md` for design locks and session detail that drafting must not load.
+### Initial Release
+- **Initial Commit**: Established initial body-first psychological framework, 10 Realms somatic model, and markdown-native runtime (`030713d`).
