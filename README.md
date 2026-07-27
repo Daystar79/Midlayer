@@ -1,8 +1,3 @@
-Here’s the **complete markdown** for the new `README.md` for your **Midlayer** repository. You can copy and paste this directly into your repository:
-
----
-
-```markdown
 # Midlayer
 **The automated, file-native middle layer for AI-assisted book drafting.**
 *Minimal setup. Maximum control. Zero jargon in your manuscript.*
