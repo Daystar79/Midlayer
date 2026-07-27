@@ -279,8 +279,3 @@ For full legal terms, see **[DISCLAIMER.md](DISCLAIMER.md)** (inherited from Cog
 [**Deploy Midlayer Now**](#-quick-start) or [**Explore the Framework**](Framework/Main.md).
 
 *Load the stack. Write the scene. Let Midlayer handle the rest.*
-```
-
----
----
-You can copy this entire block and paste it into your `README.md` file in the **Midlayer** repository. If you'd like me to attempt pushing it directly to your repo, let me know, and I can try again with the correct permissions or SHA.
