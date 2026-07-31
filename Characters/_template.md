@@ -9,6 +9,7 @@ cultural_bias: "[Belief/Heritage/Era — temporal tracking defaults (e.g. covena
 active_focus: "Realm [N] — [Name]"
 latent_anchors: ["Realm [a] — [Name]", "Realm [b] — [Name]", "Realm [c] — [Name]"]
 cognitive_bias: "[Bias Name] — [one-line rewrite rule]"
+cognitive_gift: "[Gift Name] — [one-line resonance rule]"
 default_somatic_alignment: "[throat, breath, jaw, posture, hands…]"
 
 # Build defaults only. Runtime evolution → Characters/[slug]_log.yaml (not this file).
@@ -30,6 +31,7 @@ voice:
   syntactical_engine: "[concrete sentence structures and patterns — e.g. 'Fragmented clauses; breathy upward inflection; heavy oh/well/you know; short 3-5 word bursts']"
   conversational_stance: "[dominant | yielding | evasive | counter-querying | directive | buffering]"
   verbal_defense: "[verbal action under pressure — e.g. 'insulates with technical jargon', 'deflects with questions', 'over-explains', 'silences self', 'smothers with care']"
+  generative_stance: "[verbal action under safety/trust — e.g. 'unhurried, expansive explanations', 'invites collaborative discovery', 'grounds with direct, gentle clarity']"
   hard_bans: ["[what this character never says — e.g. 'Intellectual jargon', 'cold precision']"]
   signature_tics: ["[repeated words/gestures — e.g. 'Darling...', breathy laughter, hair-tuck]"]
   relational_verbal_shifts:
@@ -51,4 +53,4 @@ scene_seeds:
   - "[Alternate seed]"
 ---
 
-*Load: Fast Load YAML. Copy matrix, voice, somatic, adult-gate to silent state. Overlay Characters/[slug]_log.yaml snapshot when present. 18+ OFF. Enable only if brief/request AND Canon Adult YES. Run Focus brace/release from realm_data.yaml. Never name system terms in speech.*
+*Load: Fast-load YAML into Cognitive Pipeline silent state. Overlay Characters/[slug]_log.yaml when present. Query Framework/CognitivePipeline.md per beat. Age invariant: minors are never sexual subjects. Brace/release from realm_data.yaml. Never name system terms in speech.*

@@ -1,5 +1,15 @@
-# Source Changes — Psyche Framework
+# Source Changes — CognitiveMiddleware
 *Changes made from original source material during this chat*
+
+## 2026-07-31 — Pipeline runtime hardening + remove modules — **applied** (agent)
+
+- **Naming:** Product/path strings standardized to **CognitiveMiddleware**; portable relative links (no absolute `file:///mnt/...`).
+- **Module system as loop API:** `Modules.md` restored/clarified — downstream apps register injectors into the cognitive loop; core pipeline stays fixed.
+- **Unified state:** Durable `_log.yaml` vs live `psychosomatic_state` schema; commit map in `CognitivePipeline.md`.
+- **Pipeline wiring:** Required inputs (card, log, realm_data, schema); realm catalog lookup; salience sources.
+- **Deploy:** Ships `CognitivePipeline.md` + `Framework/Schemas/` + `Modules.md`; self-ignore `CognitiveMiddleware`.
+- **Apps:** Restored session boot / turn / style-lock orchestration in Main + CharacterRuntime without re-merging psyche.
+- **realm_data.yaml:** Single YAML document for `safe_load`.
 
 ## 2026-07-24 — Instruction-to-Constraint Optimization Pass — **applied** (agent)
 
@@ -40,7 +50,7 @@
 
 ## 2026-07-13 — Finish Main entry path (post-refactor cleanup) — **applied** (agent)
 
-- **Main.md:** Honest load protocol (always Main + Rules_Index + realm_index + cards); strip RP opening beat / CONFIG / `/debug`; add Prism §3c; de-B&L brief template; drafting-only execute loop; author commands cleaned.
+- **Main.md:** Honest load protocol (always Main + Rules_Index + realm_data.yaml + cards); strip RP opening beat / CONFIG / `/debug`; add Prism §3c; de-B&L brief template; drafting-only execute loop; author commands cleaned.
 - **Rules_Index.md:** Drafting-first; playground reduced to pointer; generic phrase watchlist; book-local watchlist optional.
 - **Stubs:** `psyche_framework.md`, `Drafting_Workflow.md` → point at Main (do not load for gen).
 - **Mechanics:** `humanity.md` / `voices.md` slimmed to optional supplements; prose.md marked optional detail.
@@ -62,8 +72,8 @@
 
 ## 2026-07-12 — Token Usage Optimization (Psychology Index) — **applied** (agent)
 
-- **Psychology Realm Index:** Created [realm_index.md](./Psychology/realm_index.md) (and its Web copy `Web/realm_index.md`) to consolidate the somatic focus, release/passage states, bracing/remnants, and keys of all 10 Realms in one dense document.
-- **Loading Protocol update:** Updated `psyche_framework.md` and its copy `Web/psyche_framework.md` to load only `realm_index.md` by default, reducing the token overhead of loading individual realm files by thousands of tokens. Individual realm files are now only loaded for deep somatic audits.
+- **Psychology Realm Data:** Created [realm_data.yaml](./Psychology/realm_data.yaml) to consolidate the somatic focus, release/passage states, bracing/remnants, and keys of all 10 Realms in one dense YAML document.
+- **Loading Protocol update:** Updated `psyche_framework.md` and its copy `Web/psyche_framework.md` to load only `realm_data.yaml` by default, reducing the token overhead of loading individual realm files by thousands of tokens. Individual realm files are now only loaded for deep somatic audits.
 
 ## 2026-07-12 — Refactor & Auditing — **applied** (agent)
 
