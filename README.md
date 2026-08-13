@@ -22,12 +22,15 @@ Midlayer is **one of three interconnected repos** in your workflow:
 
 | Repo | Role | Purpose |
 |------|------|---------|
-| **[Midlayer](https://github.com/Daystar79/Midlayer)** (this repo) | **Drafting Hub** | Automates book assembly, continuity tracking, and prose refinement. |
-| **[CognitiveMiddleware](https://github.com/Daystar79/CognitiveMiddleware)** | **Psychological Engine** | Powers the **off-page matrix** (realms, biases, somatics) for deep character simulation. |
-| **[CharacterSimulator](https://github.com/Daystar79/CharacterSimulator)** | **Live RP Engine** | Drop-in runtime for **interactive character testing** and private RP. |
+| **[Midlayer](https://github.com/Daystar79/Midlayer)** (this repo) | **Drafting hub (agent / file-native)** | Automates book assembly, continuity tracking, and prose refinement via CLI + files. |
+| **Midlayer.UI** (sibling project) | **Desktop application host** | Optional Photino/Blazor shell that binds a Midlayer book folder; does **not** live in this repo. See local `../Midlayer.UI`. |
+| **[CognitiveMiddleware](https://github.com/Daystar79/CognitiveMiddleware)** | **Psychological engine** | Powers the **off-page matrix** (realms, biases, somatics) for deep character simulation. |
+| **[CharacterSimulator](https://github.com/Daystar79/CharacterSimulator)** | **Live RP engine** | Drop-in runtime for **interactive character testing** and private RP. |
 
 **Workflow:**
-`Midlayer (Drafting)` → `CognitiveMiddleware (Psychology)` → `CharacterSimulator (Live Testing)`
+`Midlayer (agent drafting)` → optional `Midlayer.UI` (desktop shell) · `CognitiveMiddleware` (psychology) · `CharacterSimulator` / Simulacra (live testing)
+
+**Split:** agent tooling stays here; application code stays in **Midlayer.UI**.
 
 ---
 

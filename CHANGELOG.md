@@ -9,6 +9,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 ## [Unreleased] - 2026-07-31
 
 ### Added
+- **UI planning split:** Living app backlog lives in sibling **`../Midlayer.UI`** (desktop host); this repo’s `to_do.md` is a pointer only so agent (file-native CLI) and application stay separate. README ecosystem table documents the split.
 - **`PROJECT_SCOPE.md`:** Authoritative product boundaries and downstream integration contract (v2).
 - **Unified state model:** Durable `Characters/[slug]_log.yaml` vs live `Schemas/psychosomatic_state.json`, with commit mapping in `CognitivePipeline.md`.
 - **Pipeline wiring:** Card, log, `realm_data.yaml`, and schema as required inputs; intimate stimulus as ordinary pipeline interpretation (§7.1).
